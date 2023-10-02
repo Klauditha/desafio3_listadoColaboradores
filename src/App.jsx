@@ -8,6 +8,8 @@ function App() {
 
   const eliminarColaborador = (id) => {
     console.log("Eliminando", id);
+    const listaEliminada = colaboradores.filter(x => x.id !== id)
+    setColaboradores(listaEliminada)
   }
   return (
     <>
