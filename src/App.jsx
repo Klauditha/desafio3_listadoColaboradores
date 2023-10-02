@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Listado from "./components/Listado/Listado";
 import { BaseColaboradores } from "./BaseColaboradores";
+import Alert from "./components/Alert/Alert";
 
 function App() {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
@@ -15,6 +16,8 @@ function App() {
     <>
       <h1>Lista de Colaboradores</h1>
       <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
+      <Alert mensaje="Colaborador eliminado" color="success" />
+      <Alert mensaje="Colaborador eliminado" color="danger" />
     </>
   );
 }
