@@ -6,7 +6,7 @@ import Alert from "./components/Alert/Alert";
 import Buscador from "./components/Buscador/Buscador";
 import Formulario from "./components/Formulario/Formulario";
 
-const App = (props) => {
+const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
   const [alerta, setAlerta] = useState({ error: false, msg: "", color: "" });
 
@@ -19,7 +19,7 @@ const App = (props) => {
 
     <>
 
-      <div className="container mt-3 pt-3 p-2">
+      <div className="container-fluid mt-3 pt-3 p-2">
         <h1>Lista de Colaboradores</h1>
 
         <div className="row">
@@ -32,15 +32,15 @@ const App = (props) => {
           </div>
           <div className="col-3">
             <h4 className="mb-2 pb-2">Agregar colaborador</h4>
-            <Formulario setAlerta={setAlerta} alerta={alerta} />
+            <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlerta={setAlerta} alerta={alerta} />
             <div className="row">
-              {props.alerta.msg ? <Alert className="rounded-3" variant={props.alerta.color} mensaje={props.alerta.msg} /> : null}
+              {/* <Alert msg={setAlerta.msg} color={setAlerta.color} /> */}
+              {alerta.error ? <Alert msg={alerta.msg} color={alerta.color} /> : null}
               {/* <Alert mensaje="Colaborador eliminado" color="success" /> */}
               {/* <Alert mensaje="Colaborador eliminado" color="danger" /> */}
             </div>
           </div>
         </div>
-
       </div>
 
     </>

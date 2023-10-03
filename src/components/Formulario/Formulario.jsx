@@ -1,22 +1,23 @@
 import { useState } from "react";
 
-const Formulario = (props) => {
+const Formulario = ({ colaboradores, setColaboradores, alerta, setAlerta }) => {
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [edad, setEdad] = useState("");
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
+    // const [error, setError] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (nombre === "" || email === "" || edad === "" || cargo === "" || telefono === "") {
-            props.setAlerta({
+            setAlerta({
                 error: true,
                 msg: "Completa todos los campos !",
                 color: "danger",
             });
         } else {
-            props.setAlerta({
+            setAlerta({
                 error: true,
                 msg: "Colaborador agregado !",
                 color: "success",
@@ -26,6 +27,8 @@ const Formulario = (props) => {
             setEdad("");
             setCargo("");
             setTelefono("");
+            const colaborador = { nombre, email, edad, cargo, telefono };
+            setColaboradores([...colaboradores, colaborador])
         }
     }
 
