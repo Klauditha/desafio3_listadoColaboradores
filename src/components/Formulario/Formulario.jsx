@@ -7,9 +7,36 @@ const Formulario = (props) => {
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (nombre === "" || email === "" || password === "" || pass === "") {
+            props.setAlerta({
+                error: true,
+                msg: "Completa todos los campos !",
+                color: "danger",
+            });
+        } else if (password != pass) {
+            props.setAlerta({
+                error: true,
+                msg: "Claves distintas",
+                color: "danger",
+            });
+        } else {
+            props.setAlerta({
+                error: true,
+                msg: "Registro correcto",
+                color: "success",
+            });
+            setNombre("");
+            setEmail("");
+            setPassword("");
+            setPass("");
+        }
+    }
+
     return (
 
-        <form>
+        <form className="m-2 p-2">
             <div className="mb-3">
                 <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Nombre del colaborador" value={nombre}
                     onChange={(e) => setNombre(e.target.value)} />
