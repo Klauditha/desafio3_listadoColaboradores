@@ -1,7 +1,7 @@
-const Alert = (props) => {
+const Alert = ({ msg, color }) => {
   return (
-    <div className={`alert alert-${props.color}`} role="alert">
-      {props.mensaje}
+    <div className={`alert alert-${color}`} role="alert">
+      {msg}
     </div>
   );
 };
