@@ -1,51 +1,41 @@
 import { useState } from "react";
 
 const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
-  const [nombre, setNombre] = useState("");
-  const [correo, setCorreo] = useState("");
-  const [edad, setEdad] = useState("");
-  const [cargo, setCargo] = useState("");
-  const [telefono, setTelefono] = useState("");
- 
+    const [nombre, setNombre] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [edad, setEdad] = useState("");
+    const [cargo, setCargo] = useState("");
+    const [telefono, setTelefono] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (
-      nombre === "" ||
-      correo === "" ||
-      edad === "" ||
-      cargo === "" ||
-      telefono === ""
-    ) {
-      setAlerta({
-        error: true,
-        msg: "Completa todos los campos !",
-        color: "danger",
-      });
-    } else {
-      setAlerta({
-        error: true,
-        msg: "Colaborador agregado !",
-        color: "success",
-      });
-      const colaborador = {
-        id: colaboradores.length + 1,
-        nombre,
-        correo,
-        edad,
-        cargo,
-        telefono,
-      };
-      setNombre("");
-      setCorreo("");
-      setEdad("");
-      setCargo("");
-      setTelefono("");
-      setColaboradores([...colaboradores, colaborador]);
+    const obtenerId = () => {
+        return colaboradores.length + 1;
     }
-  };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (nombre === "" || correo === "" || edad === "" || cargo === "" || telefono === "") {
+            setAlerta({
+                error: true,
+                msg: "Completa todos los campos !",
+                color: "danger",
+            });
+        } else {
+            setAlerta({
+                error: true,
+                msg: "Colaborador agregado !",
+                color: "success",
+            });
+            setNombre("");
+            setCorreo("");
+            setEdad("");
+            setCargo("");
+            setTelefono("");
+            //const colaborador = { id:obtenerId, nombre, correo, edad, cargo, telefono };
+            const colaborador = { nombre, correo, edad, cargo, telefono };
+            setColaboradores([...colaboradores, colaborador])
+        }
+    }
 
-  return (
+    return (
 
         <form className="mb-2 pb-2" onSubmit={handleSubmit}>
             <div className="mb-3">
@@ -69,11 +59,9 @@ const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
                     onChange={(e) => setTelefono(e.target.value)} />
             </div>
 
-      <button type="submit" className="btn btn-primary">
-        Agregar colaborador
-      </button>
-    </form>
-  );
-};
+            <button type="submit" className="btn btn-primary">Agregar colaborador</button>
+        </form>
+    )
+}
 
-export default Formulario;
+export default Formulario

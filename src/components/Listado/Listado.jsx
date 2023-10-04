@@ -3,8 +3,8 @@ import "./Listado.css";
 
 const Listado = ({ colaboradores, eliminarColaborador, buscarColaborador }) => {
   return (
-    <div className="table table-bordered table-striped">
-      <table className="table ">
+    <div>
+      <table className="table table-bordered table-striped ">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
