@@ -12,7 +12,6 @@ const App = () => {
   const [busqueda, setBusqueda] = useState("");
 
   const eliminarColaborador = (colaborador) => {
-    console.log("Eliminando", colaborador);
     const listaEliminada = colaboradores.filter(
       (x) =>
         x.nombre !== colaborador.nombre &&
@@ -25,35 +24,35 @@ const App = () => {
   };
   return (
     <>
-      <div className="container mt-3 pt-3 p-2">
-        <h1>Lista de Colaboradores</h1>
-
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row" id="tituloPrincipal">
+          <h1>Lista de Colaboradores</h1>
+        </div>
+        <div className="row" id="buscador">
           <Buscador buscarColaborador={setBusqueda} />
         </div>
-
-        <div className="row grid">
-          <div className="col-9">
-            <Listado
-              colaboradores={colaboradores}
-              buscarColaborador={busqueda}
-              eliminarColaborador={eliminarColaborador}
-            />
-          </div>
-          <div className="col-3 grid">
-            <h4 className="mb-2 pb-2">Agregar colaborador</h4>
-            <Formulario
-              colaboradores={colaboradores}
-              setColaboradores={setColaboradores}
-              setAlerta={setAlerta}
-              alerta={alerta}
-            />
-            <div className="row">
-              {alerta.error ? (
-                <Alert msg={alerta.msg} color={alerta.color} />
-              ) : null}
-            </div>
-          </div>
+        <div id="listado">
+          <Listado
+            colaboradores={colaboradores}
+            buscarColaborador={busqueda}
+            eliminarColaborador={eliminarColaborador}
+          />
+        </div>
+        <div id="tituloSecundario">
+          <h4 className="mb-2 pb-2">Agregar colaborador</h4>
+        </div>
+        <div id="formulario">
+          <Formulario
+            colaboradores={colaboradores}
+            setColaboradores={setColaboradores}
+            setAlerta={setAlerta}
+            alerta={alerta}
+          />
+        </div>
+        <div id="alerta">
+          {alerta.error ? (
+            <Alert msg={alerta.msg} color={alerta.color} />
+          ) : null}
         </div>
       </div>
     </>

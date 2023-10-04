@@ -1,3 +1,4 @@
+
 const TablaFila = ({ colaborador, eliminarColaborador }) => {
   return (
     <>
@@ -7,14 +8,7 @@ const TablaFila = ({ colaborador, eliminarColaborador }) => {
         <td>{colaborador.edad}</td>
         <td>{colaborador.cargo}</td>
         <td>{colaborador.telefono}</td>
-        <td>
-          <button
-            className="bg-danger rounded-4 text-light border-danger"
-            onClick={() => eliminarColaborador(colaborador)}
-          >
-            Eliminar
-          </button>
-        </td>
+        <td><button className="bg-danger rounded-4 text-light border-danger" onClick={() => eliminarColaborador(colaborador)}>Eliminar</button></td>
       </tr>
     </>
   );
