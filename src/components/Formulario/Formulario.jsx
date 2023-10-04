@@ -1,16 +1,15 @@
 import { useState } from "react";
 
-const Formulario = ({ colaboradores, setColaboradores, alerta, setAlerta }) => {
+const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
     const [nombre, setNombre] = useState("");
-    const [email, setEmail] = useState("");
+    const [correo, setEmail] = useState("");
     const [edad, setEdad] = useState("");
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
-    // const [error, setError] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (nombre === "" || email === "" || edad === "" || cargo === "" || telefono === "") {
+        if (nombre === "" || correo === "" || edad === "" || cargo === "" || telefono === "") {
             setAlerta({
                 error: true,
                 msg: "Completa todos los campos !",
@@ -27,7 +26,7 @@ const Formulario = ({ colaboradores, setColaboradores, alerta, setAlerta }) => {
             setEdad("");
             setCargo("");
             setTelefono("");
-            const colaborador = { nombre, email, edad, cargo, telefono };
+            const colaborador = { nombre, correo, edad, cargo, telefono };
             setColaboradores([...colaboradores, colaborador])
         }
     }
@@ -36,23 +35,23 @@ const Formulario = ({ colaboradores, setColaboradores, alerta, setAlerta }) => {
 
         <form className="mb-2 pb-2" onSubmit={handleSubmit}>
             <div className="mb-3">
-                <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Nombre del colaborador" value={nombre}
+                <input type="text" className="form-control" placeholder="Nombre del colaborador" value={nombre}
                     onChange={(e) => setNombre(e.target.value)} />
             </div>
             <div className="mb-3">
-                <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email del colaborador" value={email}
+                <input type="email" className="form-control" placeholder="Email del colaborador" value={correo}
                     onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="mb-3">
-                <input type="number" className="form-control" id="exampleInputEmail1" placeholder="Edad del colaborador" value={edad}
+                <input type="number" className="form-control" placeholder="Edad del colaborador" value={edad}
                     onChange={(e) => setEdad(e.target.value)} />
             </div>
             <div className="mb-3">
-                <input type="text" className="form-control" id="exampleInputEmail1" placeholder="Cargo del colaborador" value={cargo}
+                <input type="text" className="form-control" placeholder="Cargo del colaborador" value={cargo}
                     onChange={(e) => setCargo(e.target.value)} />
             </div>
             <div className="mb-3">
-                <input type="number" className="form-control" id="exampleInputEmail1" placeholder="Teléfono del colaborador" value={telefono}
+                <input type="number" className="form-control" placeholder="Teléfono del colaborador" value={telefono}
                     onChange={(e) => setTelefono(e.target.value)} />
             </div>
 

@@ -9,6 +9,7 @@ import Formulario from "./components/Formulario/Formulario";
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores);
   const [alerta, setAlerta] = useState({ error: false, msg: "", color: "" });
+  const [busqueda, setBusqueda] = useState("");
 
   const eliminarColaborador = (id) => {
     console.log("Eliminando", id);
@@ -19,25 +20,22 @@ const App = () => {
 
     <>
 
-      <div className="container-fluid mt-3 pt-3 p-2">
-        <h1>Lista de Colaboradores</h1>
+      <div className="container mt-3 pt-3 p-2">
+        <h1 >Lista de Colaboradores</h1>
 
         <div className="row">
-          <Buscador />
+          <Buscador buscarColaborador={setBusqueda} />
         </div>
 
-        <div className="row">
+        <div className="row grid">
           <div className="col-9">
-            <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
+            <Listado colaboradores={colaboradores} buscarColaborador={busqueda} eliminarColaborador={eliminarColaborador} />
           </div>
-          <div className="col-3">
+          <div className="col-3 grid">
             <h4 className="mb-2 pb-2">Agregar colaborador</h4>
             <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setAlerta={setAlerta} alerta={alerta} />
             <div className="row">
-              {/* <Alert msg={setAlerta.msg} color={setAlerta.color} /> */}
               {alerta.error ? <Alert msg={alerta.msg} color={alerta.color} /> : null}
-              {/* <Alert mensaje="Colaborador eliminado" color="success" /> */}
-              {/* <Alert mensaje="Colaborador eliminado" color="danger" /> */}
             </div>
           </div>
         </div>

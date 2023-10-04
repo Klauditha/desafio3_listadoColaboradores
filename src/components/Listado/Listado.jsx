@@ -1,9 +1,10 @@
 import TablaFila from "../TablaFila/TablaFila";
 import "./Listado.css";
-const Listado = ({ colaboradores, eliminarColaborador }) => {
+
+const Listado = ({ colaboradores, eliminarColaborador, buscarColaborador }) => {
   return (
-    <>
-      <table className="table table-bordered table-striped">
+    <div className="table table-bordered table-striped">
+      <table className="table ">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
@@ -11,16 +12,23 @@ const Listado = ({ colaboradores, eliminarColaborador }) => {
             <th scope="col">Edad</th>
             <th scope="col">Cargo</th>
             <th scope="col">Teléfono</th>
-            <th scope="col"></th>
+            <th scope="col" />
           </tr>
         </thead>
         <tbody>
-          {colaboradores.map((colaborador) => (
-            <TablaFila key = {colaborador.id} colaborador={colaborador} eliminarColaborador={eliminarColaborador} />
-          ))}
+          {colaboradores
+            .filter((colaborador) =>
+              Object.values(colaborador).some((valor) =>
+                valor.toLowerCase().includes(buscarColaborador.toLowerCase())
+              )
+            )
+            .map((colaborador) => (
+              <TablaFila key={colaborador.id} colaborador={colaborador} eliminarColaborador={eliminarColaborador} />
+
+            ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 
