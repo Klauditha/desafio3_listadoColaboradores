@@ -28,11 +28,9 @@ const App = () => {
         <div className="row" id="tituloPrincipal">
           <h1>Lista de Colaboradores</h1>
         </div>
-
         <div className="row" id="buscador">
           <Buscador buscarColaborador={setBusqueda} />
         </div>
-
         <div id="listado">
           <Listado
             colaboradores={colaboradores}
@@ -40,7 +38,6 @@ const App = () => {
             eliminarColaborador={eliminarColaborador}
           />
         </div>
-
         <div id="tituloSecundario">
           <h4 className="mb-2 pb-2">Agregar colaborador</h4>
         </div>
@@ -52,7 +49,6 @@ const App = () => {
             alerta={alerta}
           />
         </div>
-
         <div id="alerta">
           {alerta.error ? (
             <Alert msg={alerta.msg} color={alerta.color} />

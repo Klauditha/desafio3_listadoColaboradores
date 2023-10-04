@@ -1,5 +1,4 @@
 import TablaFila from "../TablaFila/TablaFila";
-import "./Listado.css";
 
 const Listado = ({ colaboradores, eliminarColaborador, buscarColaborador }) => {
   return (
@@ -24,7 +23,6 @@ const Listado = ({ colaboradores, eliminarColaborador, buscarColaborador }) => {
             )
             .map((colaborador) => (
               <TablaFila key={colaborador.id} colaborador={colaborador} eliminarColaborador={eliminarColaborador} />
-
             ))}
         </tbody>
       </table>
