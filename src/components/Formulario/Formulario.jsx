@@ -2,11 +2,14 @@ import { useState } from "react";
 
 const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
     const [nombre, setNombre] = useState("");
-    const [correo, setEmail] = useState("");
+    const [correo, setCorreo] = useState("");
     const [edad, setEdad] = useState("");
     const [cargo, setCargo] = useState("");
     const [telefono, setTelefono] = useState("");
 
+    const obtenerId = () => {
+        return colaboradores.length + 1;
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
         if (nombre === "" || correo === "" || edad === "" || cargo === "" || telefono === "") {
@@ -22,10 +25,11 @@ const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
                 color: "success",
             });
             setNombre("");
-            setEmail("");
+            setCorreo("");
             setEdad("");
             setCargo("");
             setTelefono("");
+            //const colaborador = { id:obtenerId, nombre, correo, edad, cargo, telefono };
             const colaborador = { nombre, correo, edad, cargo, telefono };
             setColaboradores([...colaboradores, colaborador])
         }
@@ -40,7 +44,7 @@ const Formulario = ({ colaboradores, setColaboradores, setAlerta }) => {
             </div>
             <div className="mb-3">
                 <input type="email" className="form-control" placeholder="Email del colaborador" value={correo}
-                    onChange={(e) => setEmail(e.target.value)} />
+                    onChange={(e) => setCorreo(e.target.value)} />
             </div>
             <div className="mb-3">
                 <input type="number" className="form-control" placeholder="Edad del colaborador" value={edad}
