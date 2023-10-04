@@ -1,7 +1,85 @@
-.listado {
-    width: 80%;
+/*DEFAUL - MOBILE*/
+.container-fluid {
+  display: grid;
+  grid-template-areas:
+    "tituloPrincipal"
+    "buscador"
+    "listado"
+    "tituloSecundario"
+    "formulario"
+    "alerta";
+
+  grid-template-columns: 1fr;
+}
+#tituloPrincipal {
+  grid-area: tituloPrincipal;
+  margin-top: 20px;
+  text-align: center;
+}
+#tituloSecundario {
+  grid-area: tituloSecundario;
+  margin-top: 20px;
+  text-align: center;
+}
+#buscador {
+  grid-area: buscador;
+}
+#listado {
+  margin-top:10px;
+  width: 90%;
+  grid-area: listado;
+  margin-bottom: 50px;
+  font-size: 10px;
 }
 
-.formulario {
-    width: 20%;
+#formulario {
+  width: 90%;
+  grid-area: formulario;
+  margin: auto;
+}
+
+#formulario button{
+  width: 100%;
+}
+#alerta {
+  grid-area: alerta;
+  width: 90%;
+  margin: auto;
+}
+
+/*MODO TABLET - OPCIONAL*/
+@media (min-width: 576px) and (max-width: 991px) {
+}
+/*DESKTOP*/
+@media (min-width: 992px) {
+  .container-fluid {
+    grid-template-areas:
+      "tituloPrincipal tituloPrincipal"
+      "buscador buscador"
+      "listado tituloSecundario"
+      "listado formulario"
+      "listado alerta";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 4fr 1fr;
+  }
+  #tituloSecundario {
+    text-align: left;
+  }
+
+  #tituloPrincipal{
+    text-align: left;
+    width: 90%;
+  }
+  #listado {
+    grid-area: listado;
+    font-size: 1rem;
+  }
+  #buscador {
+    grid-area: buscador;
+    margin-bottom: 20px;
+  }
+  #formulario {
+    width: 100%;
+    grid-area: formulario;
+  }
 }

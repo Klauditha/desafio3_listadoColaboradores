@@ -4,9 +4,9 @@ const Buscador = ({ buscarColaborador }) => {
   };
 
   return (
-    <form className="d-flex m-2 p-2 w-50" role="search">
+    <form role="search">
       <input
-        className="form-control me-2"
+        className="form-control"
         type="search"
         placeholder="Busca un colaborador"
         aria-label="Search"
